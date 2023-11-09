@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 用户映射器 -->
+<mapper namespace="com.hg.dao.UserMapper">
+    <!-- 查询单个用户 -->
+    <select id="findOne" parameterType="User" resultType="User">
+        SELECT * FROM user where username=#{username} and userpwd=#{userpwd}
+    </select>
+
+    <!-- 添加一个用户 -->
+    <insert id="addOne" parameterType="User" >
+        insert into user(username,userpwd) values(#{username},#{userpwd})
+    </insert>
+
+    <!-- 检查用户注册信息 -->
+    <select id="checkReg" resultType="User">
+        select * from user where username=#{username}
+    </select>
+</mapper>
